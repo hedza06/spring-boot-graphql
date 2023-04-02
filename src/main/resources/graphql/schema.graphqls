@@ -1,0 +1,49 @@
+type User {
+    id: ID!
+    firstName: String
+    lastName: String
+    email: String
+    age: Int
+    department: Department
+    roles: [Role]
+}
+
+type Role {
+    id: ID!
+    name: String
+}
+
+input RoleInput {
+    id: ID!
+    name: String
+}
+
+input DepartmentInput {
+    id: ID!
+    name: String
+}
+
+input UserCreateInput {
+    firstName: String
+    lastName: String
+    email: String
+    age: Int
+    department: DepartmentInput
+    roles: [RoleInput]
+}
+
+type Department {
+    id: ID!
+    name: String
+}
+
+type Query {
+    allUsers: [User]
+    usersPage(page: Int, size: Int): [User]
+    allRoles: [Role]
+    allDepartments: [Department]
+}
+
+type Mutation {
+    createUser(user: UserCreateInput!): User
+}
