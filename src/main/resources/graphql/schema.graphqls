@@ -37,9 +37,15 @@ type Department {
     name: String
 }
 
+type DefaultUserPage {
+    data: [User]
+    totalElements: Int!
+    totalPages: Int!
+}
+
 type Query {
     allUsers: [User]
-    usersPage(page: Int, size: Int): [User]
+    usersPage(page: Int, size: Int): DefaultUserPage
     allRoles: [Role]
     allDepartments: [Department]
 }

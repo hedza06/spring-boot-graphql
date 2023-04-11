@@ -1,5 +1,6 @@
 package com.hedza06.graphql.controller;
 
+import com.hedza06.graphql.dto.DefaultPage;
 import com.hedza06.graphql.dto.UserDTO;
 import com.hedza06.graphql.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +26,13 @@ public class UserController {
   }
 
   @QueryMapping
-  public Page<UserDTO> usersPage(@Argument Integer page, @Argument Integer size) {
-    return userService.findPage(PageRequest.of(page, size));
+  public DefaultPage<List<UserDTO>> usersPage(@Argument Integer page, @Argument Integer size) {
+    Page<UserDTO> usersPage = userService.findPage(PageRequest.of(page, size));
+    return new DefaultPage<>(
+        usersPage.getContent(),
+        usersPage.getTotalElements(),
+        usersPage.getTotalPages()
+    );
   }
 
   @MutationMapping

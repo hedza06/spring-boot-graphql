@@ -37,14 +37,17 @@ query {
 Example 2 (Get page of users):
 ```
 query {
-    usersPage(page: 0, size: 10) {
-        id
-        email
-        roles {
-            id
-            name
-        }
+  usersPage(page: 0, size: 10) {
+    data {
+      id
+      email
+      roles {
+        name
+      }
     }
+    totalElements
+    totalPages
+  }
 }
 ```
 
