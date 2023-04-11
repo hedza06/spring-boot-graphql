@@ -45,8 +45,10 @@ query {
         name
       }
     }
-    totalElements
-    totalPages
+    pageInfo {
+      totalElements
+      totalPages
+    }
   }
 }
 ```
