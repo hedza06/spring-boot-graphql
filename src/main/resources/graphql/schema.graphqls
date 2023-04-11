@@ -37,10 +37,14 @@ type Department {
     name: String
 }
 
-type DefaultUserPage {
-    data: [User]
+type PageInfo {
     totalElements: Int!
     totalPages: Int!
+}
+
+type DefaultUserPage {
+    nodes: [User]
+    pageInfo: PageInfo!
 }
 
 type Query {

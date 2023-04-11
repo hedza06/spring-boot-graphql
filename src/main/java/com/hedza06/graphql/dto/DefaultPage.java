@@ -7,8 +7,13 @@ import lombok.Getter;
 @AllArgsConstructor
 public class DefaultPage<T> {
 
-  private T data;
-  private long totalElements;
-  private long totalPages;
+  private T nodes;
+  private PageInfo pageInfo;
 
+  @Getter
+  @AllArgsConstructor
+  public static class PageInfo {
+    private long totalElements;
+    private long totalPages;
+  }
 }
