@@ -38,7 +38,7 @@ Example 2 (Get page of users):
 ```
 query {
   usersPage(page: 0, size: 10) {
-    data {
+    nodes {
       id
       email
       roles {
